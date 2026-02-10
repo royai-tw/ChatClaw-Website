@@ -17,12 +17,58 @@
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
             line-height: 1.6;
             color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
+            transition: all 0.5s ease;
+        }
+        
+        /* Top Bar */
+        .topbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .topbar-logo {
+            font-size: 24px;
+            font-weight: 700;
+        }
+        
+        .theme-selector {
+            position: relative;
+        }
+        
+        .theme-dropdown {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: 2px solid #667eea;
+            border-radius: 25px;
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .theme-dropdown:hover {
+            background: #667eea;
+            color: white;
+        }
+        
+        /* Main Content */
+        .main-content {
+            margin-top: 80px;
+            padding: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 20px;
+            min-height: calc(100vh - 80px);
         }
         
         .container {
@@ -49,10 +95,6 @@
             font-size: 48px;
             font-weight: 700;
             margin-bottom: 20px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
         }
         
         .tagline {
@@ -88,7 +130,6 @@
         .feature h3 {
             font-size: 18px;
             margin-bottom: 10px;
-            color: #667eea;
         }
         
         .feature p {
@@ -112,7 +153,6 @@
         }
         
         .btn-primary {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
         }
         
@@ -123,12 +163,10 @@
         
         .btn-secondary {
             background: white;
-            color: #667eea;
-            border: 2px solid #667eea;
+            border: 2px solid currentColor;
         }
         
         .btn-secondary:hover {
-            background: #667eea;
             color: white;
         }
         
@@ -144,6 +182,41 @@
             font-size: 16px;
             color: #666;
         }
+        
+        /* Wave Animation */
+        .wave-container {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 100px;
+            overflow: hidden;
+            z-index: -1;
+            opacity: 0.3;
+        }
+        
+        .wave {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 200%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                90deg,
+                transparent,
+                transparent 10px,
+                currentColor 10px,
+                currentColor 20px
+            );
+            animation: wave 10s linear infinite;
+        }
+        
+        @keyframes wave {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        
+        /* Theme-specific styles will be injected here */
         
         @media (max-width: 768px) {
             .container {
@@ -164,45 +237,239 @@
         }
     </style>
 </head>
-<body>
-    <div class="container">
-        <div class="logo">🦞</div>
-        <h1>ChatClaw</h1>
-        <p class="tagline">Voice-Controlled GenUI Mobile Assistant</p>
-        
-        <div class="features">
-            <div class="feature">
-                <div class="feature-icon">🗣️</div>
-                <h3>Voice Input</h3>
-                <p>Speak naturally in any language</p>
-            </div>
-            <div class="feature">
-                <div class="feature-icon">🎨</div>
-                <h3>Dynamic GenUI</h3>
-                <p>AI-generated adaptive interfaces</p>
-            </div>
-            <div class="feature">
-                <div class="feature-icon">🤖</div>
-                <h3>Claude Opus 4.6</h3>
-                <p>Powered by Anthropic's latest model</p>
-            </div>
-            <div class="feature">
-                <div class="feature-icon">🌍</div>
-                <h3>Multilingual</h3>
-                <p>Support for multiple languages</p>
-            </div>
-        </div>
-        
-        <div class="cta-section">
-            <a href="https://github.com/RoyGuanyu/ChatClaw" class="btn btn-primary" target="_blank">View on GitHub</a>
-            <a href="https://github.com/RoyGuanyu/ChatClaw/blob/main/docs/PROJECT_GOALS.md" class="btn btn-secondary" target="_blank">Learn More</a>
-        </div>
-        
-        <div class="hackathon-badge">
-            <p><strong>🏆 Built for Anthropic Claude Code Hackathon 2026</strong><br>
-            Celebrating one year of Claude Code<br>
-            February 10-16, 2026</p>
+<body data-theme="cosmic-lobster">
+    <!-- Top Bar -->
+    <div class="topbar">
+        <div class="topbar-logo">🦞 ChatClaw</div>
+        <div class="theme-selector">
+            <select class="theme-dropdown" id="themeSelector">
+                <option value="cosmic-lobster">🌌 宇宙聲波龍蝦</option>
+                <option value="neon-ocean">🌊 霓虹海洋</option>
+                <option value="fire-wave">🔥 烈焰聲波</option>
+                <option value="aurora-tech">🌈 極光科技</option>
+                <option value="cyber-red">🤖 賽博紅龍蝦</option>
+                <option value="deep-space">🚀 深空探索</option>
+                <option value="quantum-pulse">⚛️ 量子脈衝</option>
+                <option value="sunset-vibe">🌅 日落電波</option>
+                <option value="matrix-green">💚 駭客矩陣</option>
+                <option value="royal-purple">👑 皇家紫韻</option>
+            </select>
         </div>
     </div>
+    
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="container">
+            <div class="logo">🦞</div>
+            <h1>ChatClaw</h1>
+            <p class="tagline">Voice-Controlled GenUI Mobile Assistant</p>
+            
+            <div class="features">
+                <div class="feature">
+                    <div class="feature-icon">🗣️</div>
+                    <h3>Voice Input</h3>
+                    <p>Speak naturally in any language</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🎨</div>
+                    <h3>Dynamic GenUI</h3>
+                    <p>AI-generated adaptive interfaces</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🤖</div>
+                    <h3>Claude Opus 4.6</h3>
+                    <p>Powered by Anthropic's latest model</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🌍</div>
+                    <h3>Multilingual</h3>
+                    <p>Support for multiple languages</p>
+                </div>
+            </div>
+            
+            <div class="cta-section">
+                <a href="https://github.com/RoyGuanyu/ChatClaw" class="btn btn-primary" target="_blank">View on GitHub</a>
+                <a href="https://github.com/RoyGuanyu/ChatClaw/blob/main/docs/PROJECT_GOALS.md" class="btn btn-secondary" target="_blank">Learn More</a>
+            </div>
+            
+            <div class="hackathon-badge">
+                <p><strong>🏆 Built for Anthropic Claude Code Hackathon 2026</strong><br>
+                Celebrating one year of Claude Code<br>
+                February 10-16, 2026</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Wave Animation -->
+    <div class="wave-container">
+        <div class="wave"></div>
+    </div>
+    
+    <script>
+        const themes = {
+            'cosmic-lobster': {
+                body: 'linear-gradient(135deg, #0A0E27 0%, #1A1F3A 50%, #2D1B3D 100%)',
+                primary: '#FF4136',
+                secondary: '#00F5FF',
+                accent: '#9D4EDD',
+                text: '#FFFFFF',
+                containerBg: 'rgba(255, 255, 255, 0.1)',
+                containerBackdrop: 'blur(20px)'
+            },
+            'neon-ocean': {
+                body: 'linear-gradient(135deg, #001F3F 0%, #003D5C 50%, #005A7A 100%)',
+                primary: '#FF6B6B',
+                secondary: '#00D9FF',
+                accent: '#4ECDC4',
+                text: '#FFFFFF',
+                containerBg: 'rgba(255, 255, 255, 0.1)',
+                containerBackdrop: 'blur(20px)'
+            },
+            'fire-wave': {
+                body: 'linear-gradient(135deg, #1A0000 0%, #330000 50%, #4D0000 100%)',
+                primary: '#FF4136',
+                secondary: '#FF6B35',
+                accent: '#FFD700',
+                text: '#FFFFFF',
+                containerBg: 'rgba(255, 255, 255, 0.08)',
+                containerBackdrop: 'blur(20px)'
+            },
+            'aurora-tech': {
+                body: 'linear-gradient(135deg, #1E1E3F 0%, #2D2D5F 50%, #3C3C7F 100%)',
+                primary: '#FF4136',
+                secondary: '#00FF9F',
+                accent: '#FF6EC7',
+                text: '#FFFFFF',
+                containerBg: 'rgba(255, 255, 255, 0.1)',
+                containerBackdrop: 'blur(20px)'
+            },
+            'cyber-red': {
+                body: 'linear-gradient(135deg, #0D0D0D 0%, #1A1A1A 50%, #0A0A0A 100%)',
+                primary: '#E63946',
+                secondary: '#00FFE1',
+                accent: '#FF006E',
+                text: '#00FFE1',
+                containerBg: 'rgba(230, 57, 70, 0.1)',
+                containerBackdrop: 'blur(20px)'
+            },
+            'deep-space': {
+                body: 'linear-gradient(135deg, #000000 0%, #1A1A2E 50%, #16213E 100%)',
+                primary: '#FF4136',
+                secondary: '#0F4C75',
+                accent: '#3282B8',
+                text: '#BBE1FA',
+                containerBg: 'rgba(255, 255, 255, 0.05)',
+                containerBackdrop: 'blur(20px)'
+            },
+            'quantum-pulse': {
+                body: 'linear-gradient(135deg, #120458 0%, #1E0771 50%, #2B0A8A 100%)',
+                primary: '#FF4136',
+                secondary: '#00FFF5',
+                accent: '#FF00FF',
+                text: '#FFFFFF',
+                containerBg: 'rgba(255, 255, 255, 0.1)',
+                containerBackdrop: 'blur(20px)'
+            },
+            'sunset-vibe': {
+                body: 'linear-gradient(135deg, #2C003E 0%, #4A0E4E 50%, #81007F 100%)',
+                primary: '#FF6B6B',
+                secondary: '#FFD93D',
+                accent: '#FF8C42',
+                text: '#FFFFFF',
+                containerBg: 'rgba(255, 255, 255, 0.1)',
+                containerBackdrop: 'blur(20px)'
+            },
+            'matrix-green': {
+                body: 'linear-gradient(135deg, #000000 0%, #0D0D0D 50%, #001100 100%)',
+                primary: '#00FF41',
+                secondary: '#FF4136',
+                accent: '#39FF14',
+                text: '#00FF41',
+                containerBg: 'rgba(0, 255, 65, 0.05)',
+                containerBackdrop: 'blur(20px)'
+            },
+            'royal-purple': {
+                body: 'linear-gradient(135deg, #1A0033 0%, #2D0052 50%, #400070 100%)',
+                primary: '#FF4136',
+                secondary: '#A463F2',
+                accent: '#D4A5FF',
+                text: '#FFFFFF',
+                containerBg: 'rgba(255, 255, 255, 0.1)',
+                containerBackdrop: 'blur(20px)'
+            }
+        };
+        
+        function applyTheme(themeName) {
+            const theme = themes[themeName];
+            const root = document.documentElement;
+            
+            document.body.style.background = theme.body;
+            document.body.style.color = theme.text;
+            
+            // Update container
+            const container = document.querySelector('.container');
+            container.style.background = theme.containerBg;
+            container.style.backdropFilter = theme.containerBackdrop;
+            container.style.border = `1px solid ${theme.secondary}40`;
+            
+            // Update heading
+            const h1 = document.querySelector('h1');
+            h1.style.background = `linear-gradient(135deg, ${theme.primary} 0%, ${theme.secondary} 100%)`;
+            h1.style.webkitBackgroundClip = 'text';
+            h1.style.webkitTextFillColor = 'transparent';
+            h1.style.backgroundClip = 'text';
+            
+            // Update buttons
+            const btnPrimary = document.querySelectorAll('.btn-primary');
+            btnPrimary.forEach(btn => {
+                btn.style.background = `linear-gradient(135deg, ${theme.primary} 0%, ${theme.secondary} 100%)`;
+            });
+            
+            const btnSecondary = document.querySelectorAll('.btn-secondary');
+            btnSecondary.forEach(btn => {
+                btn.style.color = theme.primary;
+                btn.style.borderColor = theme.primary;
+            });
+            
+            // Update feature headings
+            const featureHeadings = document.querySelectorAll('.feature h3');
+            featureHeadings.forEach(h3 => {
+                h3.style.color = theme.primary;
+            });
+            
+            // Update wave color
+            const wave = document.querySelector('.wave');
+            wave.style.color = theme.secondary;
+            
+            // Update topbar
+            const topbar = document.querySelector('.topbar');
+            topbar.style.background = `${theme.containerBg}`;
+            topbar.style.backdropFilter = theme.containerBackdrop;
+            
+            const topbarLogo = document.querySelector('.topbar-logo');
+            topbarLogo.style.background = `linear-gradient(135deg, ${theme.primary} 0%, ${theme.secondary} 100%)`;
+            topbarLogo.style.webkitBackgroundClip = 'text';
+            topbarLogo.style.webkitTextFillColor = 'transparent';
+            topbarLogo.style.backgroundClip = 'text';
+            
+            const dropdown = document.querySelector('.theme-dropdown');
+            dropdown.style.borderColor = theme.primary;
+            dropdown.style.color = theme.primary;
+            
+            // Save preference
+            localStorage.setItem('chatclaw-theme', themeName);
+        }
+        
+        // Theme selector event
+        const themeSelector = document.getElementById('themeSelector');
+        themeSelector.addEventListener('change', (e) => {
+            applyTheme(e.target.value);
+        });
+        
+        // Load saved theme or default
+        const savedTheme = localStorage.getItem('chatclaw-theme') || 'cosmic-lobster';
+        themeSelector.value = savedTheme;
+        applyTheme(savedTheme);
+    </script>
 </body>
 </html>
