@@ -16,9 +16,9 @@
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
             line-height: 1.6;
-            color: #333;
             min-height: 100vh;
             transition: all 0.5s ease;
+            overflow-x: hidden;
         }
         
         /* Top Bar */
@@ -40,10 +40,9 @@
         .topbar-logo {
             font-size: 24px;
             font-weight: 700;
-        }
-        
-        .theme-selector {
-            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
         
         .theme-dropdown {
@@ -64,20 +63,41 @@
         /* Main Content */
         .main-content {
             margin-top: 80px;
-            padding: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            padding: 40px 20px;
             min-height: calc(100vh - 80px);
         }
         
-        .container {
-            max-width: 800px;
-            background: white;
+        .hero-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+            margin-bottom: 60px;
+        }
+        
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
             border-radius: 20px;
-            padding: 60px 40px;
             box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            text-align: center;
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 20px;
+        }
+        
+        .hero-content {
+            padding: 20px;
         }
         
         .logo {
@@ -99,52 +119,19 @@
         
         .tagline {
             font-size: 24px;
-            color: #666;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
         }
         
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-            margin: 40px 0;
-            text-align: left;
-        }
-        
-        .feature {
-            padding: 20px;
-            background: #f8f9fa;
-            border-radius: 10px;
-            transition: transform 0.3s ease;
-        }
-        
-        .feature:hover {
-            transform: translateY(-5px);
-        }
-        
-        .feature-icon {
-            font-size: 32px;
-            margin-bottom: 10px;
-        }
-        
-        .feature h3 {
-            font-size: 18px;
-            margin-bottom: 10px;
-        }
-        
-        .feature p {
-            font-size: 14px;
-            color: #666;
-        }
-        
-        .cta-section {
-            margin-top: 40px;
+        .cta-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+            flex-wrap: wrap;
         }
         
         .btn {
             display: inline-block;
             padding: 15px 40px;
-            margin: 10px;
             font-size: 18px;
             font-weight: 600;
             text-decoration: none;
@@ -170,17 +157,58 @@
             color: white;
         }
         
-        .hackathon-badge {
-            margin-top: 40px;
-            padding: 20px;
-            background: #fff8e1;
-            border-radius: 10px;
-            border-left: 4px solid #ffa726;
+        /* Features Section */
+        .features-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
         }
         
-        .hackathon-badge p {
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 40px;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature {
+            padding: 30px;
+            border-radius: 15px;
+            transition: transform 0.3s ease;
+        }
+        
+        .feature:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+        
+        .feature h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+        
+        .feature p {
             font-size: 16px;
-            color: #666;
+            opacity: 0.8;
+        }
+        
+        /* Hackathon Badge */
+        .hackathon-badge {
+            max-width: 800px;
+            margin: 60px auto 40px;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
         }
         
         /* Wave Animation */
@@ -216,11 +244,23 @@
             100% { transform: translateX(-50%); }
         }
         
-        /* Theme-specific styles will be injected here */
-        
         @media (max-width: 768px) {
-            .container {
-                padding: 40px 20px;
+            .hero-section {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .topbar {
+                padding: 10px 15px;
+            }
+            
+            .topbar-logo {
+                font-size: 18px;
+            }
+            
+            .theme-dropdown {
+                padding: 8px 15px;
+                font-size: 14px;
             }
             
             h1 {
@@ -231,8 +271,13 @@
                 font-size: 18px;
             }
             
-            .features {
-                grid-template-columns: 1fr;
+            .cta-buttons {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+                text-align: center;
             }
         }
     </style>
@@ -240,63 +285,87 @@
 <body data-theme="cosmic-lobster">
     <!-- Top Bar -->
     <div class="topbar">
-        <div class="topbar-logo">🦞 ChatClaw</div>
+        <div class="topbar-logo">
+            <span>🦞</span>
+            <span>ChatClaw</span>
+        </div>
         <div class="theme-selector">
             <select class="theme-dropdown" id="themeSelector">
                 <option value="cosmic-lobster">🌌 宇宙聲波龍蝦</option>
-                <option value="neon-ocean">🌊 霓虹海洋</option>
-                <option value="fire-wave">🔥 烈焰聲波</option>
-                <option value="aurora-tech">🌈 極光科技</option>
-                <option value="cyber-red">🤖 賽博紅龍蝦</option>
-                <option value="deep-space">🚀 深空探索</option>
-                <option value="quantum-pulse">⚛️ 量子脈衝</option>
-                <option value="sunset-vibe">🌅 日落電波</option>
-                <option value="matrix-green">💚 駭客矩陣</option>
-                <option value="royal-purple">👑 皇家紫韻</option>
+                <option value="minimal-white">⚪ 純白極簡</option>
+                <option value="neon-cyber">🌃 霓虹賽博龐克</option>
+                <option value="retro-wave">🌺 復古蒸汽波</option>
+                <option value="zen-garden">🎋 日式和風</option>
+                <option value="glass-future">💎 未來主義玻璃</option>
+                <option value="nature-organic">🌿 自然有機</option>
+                <option value="industrial">🏭 工業風</option>
+                <option value="dreamy-gradient">✨ 漸變夢幻</option>
+                <option value="high-contrast">⬛ 高對比黑白</option>
             </select>
         </div>
     </div>
     
     <!-- Main Content -->
     <div class="main-content">
-        <div class="container">
-            <div class="logo">🦞</div>
-            <h1>ChatClaw</h1>
-            <p class="tagline">Voice-Controlled GenUI Mobile Assistant</p>
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="video-container">
+                <iframe 
+                    src="https://www.youtube.com/embed/bSiMSSeno9g" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
+            </div>
             
+            <div class="hero-content">
+                <div class="logo">🦞</div>
+                <h1>ChatClaw</h1>
+                <p class="tagline">Voice-Controlled GenUI Mobile Assistant</p>
+                <p>Speak naturally in any language, and let AI generate adaptive interfaces instantly. Powered by Claude Opus 4.6.</p>
+                
+                <div class="cta-buttons">
+                    <a href="https://github.com/RoyGuanyu/ChatClaw" class="btn btn-primary" target="_blank">View on GitHub</a>
+                    <a href="https://github.com/RoyGuanyu/ChatClaw/blob/main/docs/PROJECT_GOALS.md" class="btn btn-secondary" target="_blank">Learn More</a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Features Section -->
+        <section class="features-section">
+            <h2 class="section-title">Features</h2>
             <div class="features">
                 <div class="feature">
                     <div class="feature-icon">🗣️</div>
                     <h3>Voice Input</h3>
-                    <p>Speak naturally in any language</p>
+                    <p>Speak naturally in any language - no typing required</p>
                 </div>
                 <div class="feature">
                     <div class="feature-icon">🎨</div>
                     <h3>Dynamic GenUI</h3>
-                    <p>AI-generated adaptive interfaces</p>
+                    <p>AI-generated adaptive interfaces that fit your needs</p>
                 </div>
                 <div class="feature">
                     <div class="feature-icon">🤖</div>
                     <h3>Claude Opus 4.6</h3>
-                    <p>Powered by Anthropic's latest model</p>
+                    <p>Powered by Anthropic's most advanced model</p>
                 </div>
                 <div class="feature">
                     <div class="feature-icon">🌍</div>
                     <h3>Multilingual</h3>
-                    <p>Support for multiple languages</p>
+                    <p>Support for multiple languages out of the box</p>
                 </div>
             </div>
-            
-            <div class="cta-section">
-                <a href="https://github.com/RoyGuanyu/ChatClaw" class="btn btn-primary" target="_blank">View on GitHub</a>
-                <a href="https://github.com/RoyGuanyu/ChatClaw/blob/main/docs/PROJECT_GOALS.md" class="btn btn-secondary" target="_blank">Learn More</a>
-            </div>
-            
-            <div class="hackathon-badge">
-                <p><strong>🏆 Built for Anthropic Claude Code Hackathon 2026</strong><br>
+        </section>
+        
+        <!-- Hackathon Badge -->
+        <div class="hackathon-badge">
+            <p style="font-size: 18px; font-weight: 600; margin-bottom: 10px;">
+                🏆 Built for Anthropic Claude Code Hackathon 2026
+            </p>
+            <p style="opacity: 0.8;">
                 Celebrating one year of Claude Code<br>
-                February 10-16, 2026</p>
-            </div>
+                February 10-16, 2026
+            </p>
         </div>
     </div>
     
@@ -309,152 +378,213 @@
         const themes = {
             'cosmic-lobster': {
                 body: 'linear-gradient(135deg, #0A0E27 0%, #1A1F3A 50%, #2D1B3D 100%)',
+                text: '#FFFFFF',
                 primary: '#FF4136',
                 secondary: '#00F5FF',
                 accent: '#9D4EDD',
-                text: '#FFFFFF',
-                containerBg: 'rgba(255, 255, 255, 0.1)',
-                containerBackdrop: 'blur(20px)'
+                cardBg: 'rgba(255, 255, 255, 0.1)',
+                cardBackdrop: 'blur(20px)',
+                featureBg: 'rgba(255, 65, 54, 0.1)',
+                badgeBg: 'rgba(157, 78, 221, 0.2)',
+                badgeBorder: '#9D4EDD'
             },
-            'neon-ocean': {
-                body: 'linear-gradient(135deg, #001F3F 0%, #003D5C 50%, #005A7A 100%)',
-                primary: '#FF6B6B',
-                secondary: '#00D9FF',
-                accent: '#4ECDC4',
-                text: '#FFFFFF',
-                containerBg: 'rgba(255, 255, 255, 0.1)',
-                containerBackdrop: 'blur(20px)'
-            },
-            'fire-wave': {
-                body: 'linear-gradient(135deg, #1A0000 0%, #330000 50%, #4D0000 100%)',
+            'minimal-white': {
+                body: 'linear-gradient(135deg, #FFFFFF 0%, #F8F9FA 100%)',
+                text: '#000000',
                 primary: '#FF4136',
-                secondary: '#FF6B35',
-                accent: '#FFD700',
-                text: '#FFFFFF',
-                containerBg: 'rgba(255, 255, 255, 0.08)',
-                containerBackdrop: 'blur(20px)'
+                secondary: '#2C3E50',
+                accent: '#FF4136',
+                cardBg: '#FFFFFF',
+                cardBackdrop: 'none',
+                featureBg: '#F8F9FA',
+                badgeBg: '#FFF8E1',
+                badgeBorder: '#FFA726'
             },
-            'aurora-tech': {
-                body: 'linear-gradient(135deg, #1E1E3F 0%, #2D2D5F 50%, #3C3C7F 100%)',
-                primary: '#FF4136',
-                secondary: '#00FF9F',
-                accent: '#FF6EC7',
+            'neon-cyber': {
+                body: 'linear-gradient(135deg, #FF006E 0%, #8338EC 50%, #3A86FF 100%)',
                 text: '#FFFFFF',
-                containerBg: 'rgba(255, 255, 255, 0.1)',
-                containerBackdrop: 'blur(20px)'
-            },
-            'cyber-red': {
-                body: 'linear-gradient(135deg, #0D0D0D 0%, #1A1A1A 50%, #0A0A0A 100%)',
-                primary: '#E63946',
-                secondary: '#00FFE1',
+                primary: '#FFBE0B',
+                secondary: '#FB5607',
                 accent: '#FF006E',
-                text: '#00FFE1',
-                containerBg: 'rgba(230, 57, 70, 0.1)',
-                containerBackdrop: 'blur(20px)'
+                cardBg: 'rgba(0, 0, 0, 0.5)',
+                cardBackdrop: 'blur(20px)',
+                featureBg: 'rgba(255, 190, 11, 0.2)',
+                badgeBg: 'rgba(251, 86, 7, 0.3)',
+                badgeBorder: '#FB5607'
             },
-            'deep-space': {
-                body: 'linear-gradient(135deg, #000000 0%, #1A1A2E 50%, #16213E 100%)',
-                primary: '#FF4136',
-                secondary: '#0F4C75',
-                accent: '#3282B8',
-                text: '#BBE1FA',
-                containerBg: 'rgba(255, 255, 255, 0.05)',
-                containerBackdrop: 'blur(20px)'
-            },
-            'quantum-pulse': {
-                body: 'linear-gradient(135deg, #120458 0%, #1E0771 50%, #2B0A8A 100%)',
-                primary: '#FF4136',
-                secondary: '#00FFF5',
-                accent: '#FF00FF',
+            'retro-wave': {
+                body: 'linear-gradient(135deg, #FF6AC1 0%, #7C3AED 50%, #2DD4BF 100%)',
                 text: '#FFFFFF',
-                containerBg: 'rgba(255, 255, 255, 0.1)',
-                containerBackdrop: 'blur(20px)'
+                primary: '#FBBF24',
+                secondary: '#FF6AC1',
+                accent: '#2DD4BF',
+                cardBg: 'rgba(0, 0, 0, 0.3)',
+                cardBackdrop: 'blur(15px)',
+                featureBg: 'rgba(251, 191, 36, 0.2)',
+                badgeBg: 'rgba(255, 106, 193, 0.3)',
+                badgeBorder: '#FF6AC1'
             },
-            'sunset-vibe': {
-                body: 'linear-gradient(135deg, #2C003E 0%, #4A0E4E 50%, #81007F 100%)',
-                primary: '#FF6B6B',
-                secondary: '#FFD93D',
-                accent: '#FF8C42',
+            'zen-garden': {
+                body: 'linear-gradient(135deg, #F5E6D3 0%, #E8DCC4 100%)',
+                text: '#2C1810',
+                primary: '#C41E3A',
+                secondary: '#1A4D2E',
+                accent: '#C41E3A',
+                cardBg: 'rgba(255, 255, 255, 0.7)',
+                cardBackdrop: 'blur(10px)',
+                featureBg: 'rgba(196, 30, 58, 0.1)',
+                badgeBg: '#FFE5E5',
+                badgeBorder: '#C41E3A'
+            },
+            'glass-future': {
+                body: 'linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%)',
                 text: '#FFFFFF',
-                containerBg: 'rgba(255, 255, 255, 0.1)',
-                containerBackdrop: 'blur(20px)'
-            },
-            'matrix-green': {
-                body: 'linear-gradient(135deg, #000000 0%, #0D0D0D 50%, #001100 100%)',
-                primary: '#00FF41',
-                secondary: '#FF4136',
-                accent: '#39FF14',
-                text: '#00FF41',
-                containerBg: 'rgba(0, 255, 65, 0.05)',
-                containerBackdrop: 'blur(20px)'
-            },
-            'royal-purple': {
-                body: 'linear-gradient(135deg, #1A0033 0%, #2D0052 50%, #400070 100%)',
                 primary: '#FF4136',
-                secondary: '#A463F2',
-                accent: '#D4A5FF',
+                secondary: '#00D4FF',
+                accent: '#F093FB',
+                cardBg: 'rgba(255, 255, 255, 0.2)',
+                cardBackdrop: 'blur(30px)',
+                featureBg: 'rgba(255, 65, 54, 0.15)',
+                badgeBg: 'rgba(240, 147, 251, 0.2)',
+                badgeBorder: '#F093FB'
+            },
+            'nature-organic': {
+                body: 'linear-gradient(135deg, #134E4A 0%, #14532D 50%, #365314 100%)',
                 text: '#FFFFFF',
-                containerBg: 'rgba(255, 255, 255, 0.1)',
-                containerBackdrop: 'blur(20px)'
+                primary: '#FB923C',
+                secondary: '#4ADE80',
+                accent: '#FACC15',
+                cardBg: 'rgba(255, 255, 255, 0.1)',
+                cardBackdrop: 'blur(20px)',
+                featureBg: 'rgba(74, 222, 128, 0.2)',
+                badgeBg: 'rgba(250, 204, 21, 0.2)',
+                badgeBorder: '#FACC15'
+            },
+            'industrial': {
+                body: 'linear-gradient(135deg, #1C1917 0%, #292524 50%, #44403C 100%)',
+                text: '#FAFAF9',
+                primary: '#F97316',
+                secondary: '#78716C',
+                accent: '#FB923C',
+                cardBg: 'rgba(68, 64, 60, 0.5)',
+                cardBackdrop: 'blur(10px)',
+                featureBg: 'rgba(249, 115, 22, 0.15)',
+                badgeBg: 'rgba(120, 113, 108, 0.3)',
+                badgeBorder: '#78716C'
+            },
+            'dreamy-gradient': {
+                body: 'linear-gradient(135deg, #FDE68A 0%, #FCA5A5 25%, #C084FC 50%, #60A5FA 75%, #34D399 100%)',
+                text: '#1F2937',
+                primary: '#EC4899',
+                secondary: '#8B5CF6',
+                accent: '#F59E0B',
+                cardBg: 'rgba(255, 255, 255, 0.9)',
+                cardBackdrop: 'blur(20px)',
+                featureBg: 'rgba(236, 72, 153, 0.1)',
+                badgeBg: 'rgba(139, 92, 246, 0.2)',
+                badgeBorder: '#8B5CF6'
+            },
+            'high-contrast': {
+                body: '#000000',
+                text: '#FFFFFF',
+                primary: '#FFFFFF',
+                secondary: '#808080',
+                accent: '#FFFFFF',
+                cardBg: '#1A1A1A',
+                cardBackdrop: 'none',
+                featureBg: '#2A2A2A',
+                badgeBg: '#FFFFFF',
+                badgeBorder: '#FFFFFF'
             }
         };
         
         function applyTheme(themeName) {
             const theme = themes[themeName];
-            const root = document.documentElement;
             
             document.body.style.background = theme.body;
             document.body.style.color = theme.text;
             
-            // Update container
-            const container = document.querySelector('.container');
-            container.style.background = theme.containerBg;
-            container.style.backdropFilter = theme.containerBackdrop;
-            container.style.border = `1px solid ${theme.secondary}40`;
-            
             // Update heading
             const h1 = document.querySelector('h1');
-            h1.style.background = `linear-gradient(135deg, ${theme.primary} 0%, ${theme.secondary} 100%)`;
-            h1.style.webkitBackgroundClip = 'text';
-            h1.style.webkitTextFillColor = 'transparent';
-            h1.style.backgroundClip = 'text';
+            if (themeName === 'high-contrast') {
+                h1.style.color = theme.text;
+                h1.style.background = 'none';
+                h1.style.webkitTextFillColor = theme.text;
+            } else {
+                h1.style.background = `linear-gradient(135deg, ${theme.primary} 0%, ${theme.secondary} 100%)`;
+                h1.style.webkitBackgroundClip = 'text';
+                h1.style.webkitTextFillColor = 'transparent';
+                h1.style.backgroundClip = 'text';
+            }
+            
+            // Update section title
+            const sectionTitle = document.querySelector('.section-title');
+            if (themeName === 'high-contrast') {
+                sectionTitle.style.color = theme.text;
+                sectionTitle.style.background = 'none';
+                sectionTitle.style.webkitTextFillColor = theme.text;
+            } else {
+                sectionTitle.style.background = `linear-gradient(135deg, ${theme.primary} 0%, ${theme.secondary} 100%)`;
+                sectionTitle.style.webkitBackgroundClip = 'text';
+                sectionTitle.style.webkitTextFillColor = 'transparent';
+                sectionTitle.style.backgroundClip = 'text';
+            }
             
             // Update buttons
             const btnPrimary = document.querySelectorAll('.btn-primary');
             btnPrimary.forEach(btn => {
-                btn.style.background = `linear-gradient(135deg, ${theme.primary} 0%, ${theme.secondary} 100%)`;
+                btn.style.background = `linear-gradient(135deg, ${theme.primary} 0%, ${theme.accent} 100%)`;
             });
             
             const btnSecondary = document.querySelectorAll('.btn-secondary');
             btnSecondary.forEach(btn => {
                 btn.style.color = theme.primary;
                 btn.style.borderColor = theme.primary;
+                btn.style.background = theme.cardBg;
             });
             
-            // Update feature headings
+            // Update features
+            const features = document.querySelectorAll('.feature');
+            features.forEach(feature => {
+                feature.style.background = theme.featureBg;
+                feature.style.backdropFilter = theme.cardBackdrop;
+                if (themeName === 'minimal-white' || themeName === 'high-contrast') {
+                    feature.style.border = `1px solid ${theme.secondary}40`;
+                }
+            });
+            
             const featureHeadings = document.querySelectorAll('.feature h3');
             featureHeadings.forEach(h3 => {
                 h3.style.color = theme.primary;
             });
             
-            // Update wave color
+            // Update hackathon badge
+            const badge = document.querySelector('.hackathon-badge');
+            badge.style.background = theme.badgeBg;
+            badge.style.borderLeft = `4px solid ${theme.badgeBorder}`;
+            badge.style.color = themeName === 'high-contrast' ? '#000' : theme.text;
+            
+            // Update wave
             const wave = document.querySelector('.wave');
             wave.style.color = theme.secondary;
             
             // Update topbar
             const topbar = document.querySelector('.topbar');
-            topbar.style.background = `${theme.containerBg}`;
-            topbar.style.backdropFilter = theme.containerBackdrop;
+            topbar.style.background = theme.cardBg;
+            topbar.style.backdropFilter = theme.cardBackdrop;
+            topbar.style.borderBottom = `1px solid ${theme.secondary}40`;
             
             const topbarLogo = document.querySelector('.topbar-logo');
-            topbarLogo.style.background = `linear-gradient(135deg, ${theme.primary} 0%, ${theme.secondary} 100%)`;
-            topbarLogo.style.webkitBackgroundClip = 'text';
-            topbarLogo.style.webkitTextFillColor = 'transparent';
-            topbarLogo.style.backgroundClip = 'text';
+            topbarLogo.style.color = theme.text;
             
             const dropdown = document.querySelector('.theme-dropdown');
             dropdown.style.borderColor = theme.primary;
             dropdown.style.color = theme.primary;
+            dropdown.style.background = themeName === 'minimal-white' ? '#FFF' : theme.cardBg;
+            
+            // Update video container
+            const videoContainer = document.querySelector('.video-container');
+            videoContainer.style.boxShadow = `0 20px 60px ${theme.primary}40`;
             
             // Save preference
             localStorage.setItem('chatclaw-theme', themeName);
