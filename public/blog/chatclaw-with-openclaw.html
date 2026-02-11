@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Use ChatClaw with OpenClaw</title>
+<meta name="description" content="ChatClaw is the voice-powered front door to the OpenClaw ecosystem. Learn how to connect and unlock AI skills and agents.">
+<meta name="keywords" content="ChatClaw, voice AI, GenUI, generative UI, OpenClaw, voice assistant, Claude Opus">
+<link rel="canonical" href="https://chatclaw.app/blog/chatclaw-with-openclaw.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to Use ChatClaw with OpenClaw">
+<meta property="og:description" content="ChatClaw is the voice-powered front door to the OpenClaw ecosystem. Learn how to connect and unlock AI skills and agents.">
+<meta property="og:image" content="https://chatclaw.app/og-image.png">
+<meta property="og:url" content="https://chatclaw.app/blog/chatclaw-with-openclaw.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"How to Use ChatClaw with OpenClaw","description":"ChatClaw is the voice-powered front door to the OpenClaw ecosystem. Learn how to connect and unlock AI skills and agents.","author":{"@type":"Organization","name":"Rollbytes Inc."},"publisher":{"@type":"Organization","name":"ChatClaw"},"datePublished":"2026-02-11","dateModified":"2026-02-11","image":"https://chatclaw.app/og-image.png","url":"https://chatclaw.app/blog/chatclaw-with-openclaw.html"}
+</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',system-ui,sans-serif;line-height:1.8;background:#0A0E27;color:#E0E0E0;min-height:100vh}
+.topbar{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,14,39,0.92);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.08);padding:0 24px;height:56px;display:flex;align-items:center;justify-content:space-between}
+.topbar a{color:#fff;text-decoration:none;font-weight:800;font-size:18px;display:flex;align-items:center;gap:8px}
+.topbar nav a{font-weight:500;font-size:14px;color:rgba(255,255,255,0.6)}
+.topbar nav{display:flex;gap:20px}
+article{max-width:760px;margin:0 auto;padding:96px 24px 80px}
+h1{font-size:clamp(32px,5vw,48px);font-weight:900;letter-spacing:-1.5px;line-height:1.2;margin-bottom:24px;background:linear-gradient(135deg,#FF4136,#9D4EDD,#00F5FF);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+h2{font-size:24px;font-weight:700;margin:48px 0 16px;color:#fff}
+h3{font-size:18px;font-weight:600;margin:32px 0 12px;color:#FF4136}
+p,li{color:rgba(255,255,255,0.75);font-size:16px}
+p{margin-bottom:20px}
+p strong{color:#fff}
+a{color:#00F5FF;text-decoration:none}
+a:hover{text-decoration:underline}
+ul,ol{padding-left:24px;margin-bottom:20px}
+li{margin-bottom:8px}
+table{width:100%;border-collapse:collapse;margin:24px 0;font-size:14px}
+th,td{padding:12px 16px;text-align:left;border-bottom:1px solid rgba(255,255,255,0.08)}
+th{color:#FF4136;font-weight:600}
+td{color:rgba(255,255,255,0.7)}
+code{background:rgba(255,255,255,0.06);padding:2px 6px;border-radius:4px;font-size:14px}
+hr{border:none;border-top:1px solid rgba(255,255,255,0.08);margin:40px 0}
+.cta{display:inline-block;padding:14px 32px;background:linear-gradient(135deg,#FF4136,#9D4EDD);color:#fff;border-radius:999px;font-weight:700;margin:24px 0;text-decoration:none}
+.cta:hover{text-decoration:none}
+.related{margin-top:60px;padding-top:40px;border-top:1px solid rgba(255,255,255,0.08)}
+.related h3{color:#9D4EDD}
+.related ul{list-style:none;padding:0}
+.related li{margin:8px 0}
+.related li a{color:#00F5FF;font-size:15px}
+.breadcrumb{font-size:13px;color:rgba(255,255,255,0.4);margin-bottom:24px}
+.breadcrumb a{color:rgba(255,255,255,0.5)}
+footer{text-align:center;padding:40px 24px;font-size:13px;color:rgba(255,255,255,0.3);border-top:1px solid rgba(255,255,255,0.06)}
+footer a{color:#FF4136}
+</style>
+</head>
+<body>
+<div class="topbar">
+<a href="/">🦞 ChatClaw</a>
+<nav><a href="/#features">Features</a><a href="/blog/">Blog</a><a href="https://github.com/RoyGuanyu/ChatClaw" target="_blank">GitHub</a></nav>
+</div>
+<article>
+<div class="breadcrumb"><a href="/">Home</a> › <a href="/blog/">Blog</a> › How to Use ChatClaw with OpenClaw</div>
+<h1>How to Use ChatClaw with OpenClaw</h1>
+<p><strong>ChatClaw is the voice-powered front door to the OpenClaw ecosystem.</strong></p>
+<hr>
+<h2>What is OpenClaw?</h2>
+<p><a href="https://openclaw.ai">OpenClaw</a> is an open AI agent platform that connects users to powerful AI skills, tools, and services through a unified gateway. Think of it as an operating system for AI — where different agents and capabilities work together seamlessly.</p>
+<p>OpenClaw provides the infrastructure. But every platform needs a great <strong>message app</strong> to bring it to life.</p>
+<p>That&#39;s where ChatClaw comes in.</p>
+<hr>
+<h2>ChatClaw&#39;s Role in OpenClaw</h2>
+<p>ChatClaw serves as the primary <strong>message app for OpenClaw</strong> — a voice-first interface that makes the entire ecosystem accessible through natural conversation.</p>
+<p>Instead of learning APIs or navigating dashboards, you speak to ChatClaw. It routes your request through the OpenClaw gateway to the right skill or agent, then presents the result as a dynamically generated UI.</p>
+<p><strong>The architecture is simple:</strong></p>
+<pre><code>Your Voice → ChatClaw → OpenClaw Gateway → AI Skills &amp; Agents → Response → GenUI
+</code></pre>
+<p>ChatClaw handles the conversation. OpenClaw handles the intelligence. Together, they deliver a seamless experience.</p>
+<hr>
+<h2>ChatClaw Integration: Getting Connected</h2>
+<h3>Step 1: Install ChatClaw</h3>
+<p>Download the ChatClaw app on <a href="https://chatclaw.app">iOS</a>, <a href="https://chatclaw.app">Android</a>, or access it on the <a href="https://chatclaw.app">web</a>.</p>
+<h3>Step 2: Create Your Account</h3>
+<p>Sign up with email or social login. Firebase Authentication keeps your account secure.</p>
+<h3>Step 3: Connect to OpenClaw</h3>
+<p>In ChatClaw settings, enter your OpenClaw gateway URL. If you&#39;re using a hosted OpenClaw instance, your admin will provide this. For local development, point to your local gateway.</p>
+<pre><code>Settings → OpenClaw → Gateway URL → Enter your URL → Connect
+</code></pre>
+<h3>Step 4: Start Talking</h3>
+<p>Once connected, speak naturally. ChatClaw routes your requests through OpenClaw automatically. No additional configuration needed.</p>
+<hr>
+<h2>What You Can Do</h2>
+<p>With the ChatClaw + OpenClaw integration, you can:</p>
+<ul>
+<li><strong>Access AI agents</strong> — Talk to specialized agents for coding, research, writing, and more</li>
+<li><strong>Execute skills</strong> — Trigger OpenClaw skills with voice commands</li>
+<li><strong>Manage workflows</strong> — Coordinate multi-step tasks through conversation</li>
+<li><strong>Query data</strong> — Ask questions and get real-time answers from connected services</li>
+<li><strong>Control devices</strong> — Interface with OpenClaw-paired nodes and devices</li>
+</ul>
+<h3>Example: Research Workflow</h3>
+<blockquote>
+<p><strong>You:</strong> &quot;Find the latest papers on transformer architecture improvements&quot;</p>
+<p>ChatClaw sends the request to OpenClaw → a research agent gathers results → ChatClaw displays a formatted summary card with links, key findings, and suggested follow-ups.</p>
+</blockquote>
+<h3>Example: Task Coordination</h3>
+<blockquote>
+<p><strong>You:</strong> &quot;Check my calendar and find a 30-minute slot this week for a team sync&quot;</p>
+<p>ChatClaw queries the calendar skill through OpenClaw → presents available time slots as interactive cards → you pick one by tapping or speaking.</p>
+</blockquote>
+<hr>
+<h2>Why ChatClaw for OpenClaw?</h2>
+<p>Other interfaces exist for OpenClaw. But ChatClaw is purpose-built for it:</p>
+<ul>
+<li><strong>Voice-native</strong> — Faster than typing commands</li>
+<li><strong>GenUI</strong> — Results rendered as interactive UI, not raw text</li>
+<li><strong>Cross-platform</strong> — iOS, Android, Web — one experience everywhere</li>
+<li><strong>11 languages</strong> — Use OpenClaw in your preferred language</li>
+<li><strong>Real-time</strong> — Firebase-powered sync means instant updates</li>
+</ul>
+<hr>
+<h2>Get Started</h2>
+<p>The OpenClaw ecosystem is growing. ChatClaw is the easiest way to tap into it.</p>
+<p>👉 <strong><a href="https://chatclaw.app">Download ChatClaw</a></strong> and connect to OpenClaw today.</p>
+<hr>
+<p><strong>Related:</strong></p>
+<ul>
+<li><a href="/docs/content/what-is-chatclaw">What is ChatClaw?</a></li>
+<li><a href="/docs/content/getting-started">Getting Started with ChatClaw</a></li>
+<li><a href="/docs/content/faq">ChatClaw FAQ</a></li>
+</ul>
+
+<a href="https://chatclaw.app" class="cta">Try ChatClaw Now →</a>
+<div class="related">
+<h3>Related Articles</h3>
+<ul>
+<li><a href="/blog/what-is-chatclaw.html">What is ChatClaw?</a></li>
+<li><a href="/blog/getting-started.html">Getting Started with ChatClaw</a></li>
+<li><a href="/blog/chatclaw-vs-traditional-apps.html">ChatClaw vs Traditional Apps</a></li>
+<li><a href="/blog/chatclaw-with-openclaw.html">ChatClaw with OpenClaw</a></li>
+<li><a href="/blog/faq.html">ChatClaw FAQ</a></li>
+</ul>
+</div>
+</article>
+<footer><p>© 2026 <a href="https://chatclaw.app">ChatClaw</a> by Rollbytes Inc.</p></footer>
+</body>
+</html>

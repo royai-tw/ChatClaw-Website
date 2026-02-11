@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Getting Started with ChatClaw</title>
+<meta name="description" content="From install to first conversation in under 5 minutes. Step-by-step guide to set up ChatClaw on iOS, Android, and Web.">
+<meta name="keywords" content="ChatClaw, voice AI, GenUI, generative UI, OpenClaw, voice assistant, Claude Opus">
+<link rel="canonical" href="https://chatclaw.app/blog/getting-started.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Getting Started with ChatClaw">
+<meta property="og:description" content="From install to first conversation in under 5 minutes. Step-by-step guide to set up ChatClaw on iOS, Android, and Web.">
+<meta property="og:image" content="https://chatclaw.app/og-image.png">
+<meta property="og:url" content="https://chatclaw.app/blog/getting-started.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Getting Started with ChatClaw","description":"From install to first conversation in under 5 minutes. Step-by-step guide to set up ChatClaw on iOS, Android, and Web.","author":{"@type":"Organization","name":"Rollbytes Inc."},"publisher":{"@type":"Organization","name":"ChatClaw"},"datePublished":"2026-02-11","dateModified":"2026-02-11","image":"https://chatclaw.app/og-image.png","url":"https://chatclaw.app/blog/getting-started.html"}
+</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',system-ui,sans-serif;line-height:1.8;background:#0A0E27;color:#E0E0E0;min-height:100vh}
+.topbar{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,14,39,0.92);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.08);padding:0 24px;height:56px;display:flex;align-items:center;justify-content:space-between}
+.topbar a{color:#fff;text-decoration:none;font-weight:800;font-size:18px;display:flex;align-items:center;gap:8px}
+.topbar nav a{font-weight:500;font-size:14px;color:rgba(255,255,255,0.6)}
+.topbar nav{display:flex;gap:20px}
+article{max-width:760px;margin:0 auto;padding:96px 24px 80px}
+h1{font-size:clamp(32px,5vw,48px);font-weight:900;letter-spacing:-1.5px;line-height:1.2;margin-bottom:24px;background:linear-gradient(135deg,#FF4136,#9D4EDD,#00F5FF);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+h2{font-size:24px;font-weight:700;margin:48px 0 16px;color:#fff}
+h3{font-size:18px;font-weight:600;margin:32px 0 12px;color:#FF4136}
+p,li{color:rgba(255,255,255,0.75);font-size:16px}
+p{margin-bottom:20px}
+p strong{color:#fff}
+a{color:#00F5FF;text-decoration:none}
+a:hover{text-decoration:underline}
+ul,ol{padding-left:24px;margin-bottom:20px}
+li{margin-bottom:8px}
+table{width:100%;border-collapse:collapse;margin:24px 0;font-size:14px}
+th,td{padding:12px 16px;text-align:left;border-bottom:1px solid rgba(255,255,255,0.08)}
+th{color:#FF4136;font-weight:600}
+td{color:rgba(255,255,255,0.7)}
+code{background:rgba(255,255,255,0.06);padding:2px 6px;border-radius:4px;font-size:14px}
+hr{border:none;border-top:1px solid rgba(255,255,255,0.08);margin:40px 0}
+.cta{display:inline-block;padding:14px 32px;background:linear-gradient(135deg,#FF4136,#9D4EDD);color:#fff;border-radius:999px;font-weight:700;margin:24px 0;text-decoration:none}
+.cta:hover{text-decoration:none}
+.related{margin-top:60px;padding-top:40px;border-top:1px solid rgba(255,255,255,0.08)}
+.related h3{color:#9D4EDD}
+.related ul{list-style:none;padding:0}
+.related li{margin:8px 0}
+.related li a{color:#00F5FF;font-size:15px}
+.breadcrumb{font-size:13px;color:rgba(255,255,255,0.4);margin-bottom:24px}
+.breadcrumb a{color:rgba(255,255,255,0.5)}
+footer{text-align:center;padding:40px 24px;font-size:13px;color:rgba(255,255,255,0.3);border-top:1px solid rgba(255,255,255,0.06)}
+footer a{color:#FF4136}
+</style>
+</head>
+<body>
+<div class="topbar">
+<a href="/">🦞 ChatClaw</a>
+<nav><a href="/#features">Features</a><a href="/blog/">Blog</a><a href="https://github.com/RoyGuanyu/ChatClaw" target="_blank">GitHub</a></nav>
+</div>
+<article>
+<div class="breadcrumb"><a href="/">Home</a> › <a href="/blog/">Blog</a> › Getting Started with ChatClaw</div>
+<h1>Getting Started with ChatClaw</h1>
+<p><strong>From install to first conversation in under 5 minutes.</strong></p>
+<hr>
+<h2>Step 1: Download &amp; Install</h2>
+<p>ChatClaw is available on three platforms:</p>
+<table>
+<thead>
+<tr>
+<th>Platform</th>
+<th>How to Get It</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>iOS</strong></td>
+<td><a href="https://chatclaw.app">App Store</a> or TestFlight (beta)</td>
+</tr>
+<tr>
+<td><strong>Android</strong></td>
+<td><a href="https://chatclaw.app">Google Play</a> or Firebase App Distribution (beta)</td>
+</tr>
+<tr>
+<td><strong>Web</strong></td>
+<td>Open <a href="https://chatclaw.app">chatclaw.app</a> in any modern browser</td>
+</tr>
+</tbody></table>
+<p>The ChatClaw app is lightweight — under 50MB on mobile. No heavy downloads, no waiting.</p>
+<hr>
+<h2>Step 2: Create Your Account</h2>
+<p>Open ChatClaw and sign up:</p>
+<ol>
+<li>Tap <strong>Get Started</strong></li>
+<li>Choose your sign-up method — Email, Google, or Apple</li>
+<li>Verify your email (if using email sign-up)</li>
+<li>You&#39;re in</li>
+</ol>
+<p>Firebase Authentication handles your account securely. Your credentials are encrypted and never stored in plain text.</p>
+<hr>
+<h2>Step 3: First Voice Interaction</h2>
+<p>This is where ChatClaw comes alive.</p>
+<ol>
+<li>Tap the <strong>microphone button</strong> at the bottom of the screen</li>
+<li>Speak naturally — try something like:<ul>
+<li><em>&quot;What can you do?&quot;</em></li>
+<li><em>&quot;Tell me about the weather today&quot;</em></li>
+<li><em>&quot;Create a to-do list for my morning routine&quot;</em></li>
+</ul>
+</li>
+<li>Watch the AI generate a response with an <strong>adaptive interface</strong> — not just text, but cards, lists, or interactive elements tailored to your request</li>
+</ol>
+<p><strong>Tips for best results:</strong></p>
+<ul>
+<li>Speak clearly at a normal pace</li>
+<li>Be specific about what you want</li>
+<li>You can ask follow-up questions — ChatClaw maintains context</li>
+</ul>
+<hr>
+<h2>Step 4: Switch Themes</h2>
+<p>ChatClaw ships with the <strong>Factory Floor</strong> design system in two modes.</p>
+<ol>
+<li>Go to <strong>Settings</strong> (gear icon, top right)</li>
+<li>Tap <strong>Appearance</strong></li>
+<li>Choose <strong>Dark</strong> or <strong>Light</strong> theme</li>
+</ol>
+<p>The dark theme is the signature look — industrial, clean, monospace. The light theme offers the same aesthetic in a brighter palette. Both are designed for extended use without eye strain.</p>
+<hr>
+<h2>Step 5: Set Your Language</h2>
+<p>ChatClaw supports 11 languages out of the box.</p>
+<ol>
+<li>Go to <strong>Settings → Language</strong></li>
+<li>Select your preferred language:<ul>
+<li>English, 繁體中文, 简体中文, 日本語, 한국어</li>
+<li>Tiếng Việt, ไทย, Bahasa Indonesia</li>
+<li>Deutsch, Français, Español</li>
+</ul>
+</li>
+<li>The entire interface updates immediately — menus, prompts, and AI responses</li>
+</ol>
+<p>You can also <strong>speak in any supported language</strong> without changing settings. ChatClaw detects the language automatically and responds accordingly.</p>
+<hr>
+<h2>Step 6: Connect to OpenClaw (Optional)</h2>
+<p>To unlock the full AI ecosystem:</p>
+<ol>
+<li>Go to <strong>Settings → OpenClaw</strong></li>
+<li>Enter your <strong>Gateway URL</strong></li>
+<li>Tap <strong>Connect</strong></li>
+<li>A green indicator confirms the connection</li>
+</ol>
+<p>Once connected, your voice commands can access OpenClaw skills, agents, and services. See <a href="/docs/content/chatclaw-with-openclaw">How to Use ChatClaw with OpenClaw</a> for details.</p>
+<hr>
+<h2>What to Try Next</h2>
+<p>Now that you&#39;re set up, explore these features:</p>
+<ul>
+<li><strong>Voice notes</strong> — Speak your thoughts and ChatClaw organizes them</li>
+<li><strong>Task management</strong> — Say &quot;remind me to...&quot; and get interactive task cards</li>
+<li><strong>Research</strong> — Ask complex questions and get structured, visual answers</li>
+<li><strong>Multilingual chat</strong> — Switch languages mid-conversation</li>
+<li><strong>Apple Watch</strong> — If you have one, install the companion app for wrist-level access</li>
+</ul>
+<hr>
+<h2>Troubleshooting</h2>
+<p><strong>Microphone not working?</strong>
+Check your device permissions: Settings → ChatClaw → Microphone → Enable</p>
+<p><strong>Voice not recognized?</strong>
+Ensure you&#39;re in a reasonably quiet environment. ChatClaw works well with background noise, but extreme conditions may affect accuracy.</p>
+<p><strong>Can&#39;t connect to OpenClaw?</strong>
+Verify your gateway URL is correct and the OpenClaw service is running. Check your network connection.</p>
+<hr>
+<h2>You&#39;re Ready</h2>
+<p>ChatClaw is designed to be learned by using it. No manual needed. Just speak, and the interface adapts.</p>
+<p>👉 <strong><a href="https://chatclaw.app">Open ChatClaw</a></strong> and start your first conversation.</p>
+<hr>
+<p><strong>Related:</strong></p>
+<ul>
+<li><a href="/docs/content/what-is-chatclaw">What is ChatClaw?</a></li>
+<li><a href="/docs/content/chatclaw-vs-traditional-apps">ChatClaw vs Traditional Chat Apps</a></li>
+<li><a href="/docs/content/faq">ChatClaw FAQ</a></li>
+</ul>
+
+<a href="https://chatclaw.app" class="cta">Try ChatClaw Now →</a>
+<div class="related">
+<h3>Related Articles</h3>
+<ul>
+<li><a href="/blog/what-is-chatclaw.html">What is ChatClaw?</a></li>
+<li><a href="/blog/getting-started.html">Getting Started with ChatClaw</a></li>
+<li><a href="/blog/chatclaw-vs-traditional-apps.html">ChatClaw vs Traditional Apps</a></li>
+<li><a href="/blog/chatclaw-with-openclaw.html">ChatClaw with OpenClaw</a></li>
+<li><a href="/blog/faq.html">ChatClaw FAQ</a></li>
+</ul>
+</div>
+</article>
+<footer><p>© 2026 <a href="https://chatclaw.app">ChatClaw</a> by Rollbytes Inc.</p></footer>
+</body>
+</html>
