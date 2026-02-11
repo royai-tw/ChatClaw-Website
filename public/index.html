@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ChatClaw - Voice-Controlled GenUI Mobile Assistant</title>
     <meta name="description" content="Speak naturally, AI generates adaptive UI. Built with Claude Opus 4.6 for Anthropic Hackathon 2026.">
-    <meta name="theme-color" content="#0A0E27">
+    <meta name="theme-color" content="#1C1917">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://chatclaw.app/">
 
@@ -108,11 +108,11 @@
     <style>
         *{margin:0;padding:0;box-sizing:border-box}
         :root{
-            --bg:#0A0E27;--text:#fff;--primary:#FF4136;--secondary:#00F5FF;
-            --accent:#9D4EDD;--card:rgba(255,255,255,0.06);--card-blur:blur(20px);
-            --feature-bg:rgba(255,65,54,0.08);--badge-bg:rgba(157,78,221,0.15);
-            --badge-border:#9D4EDD;--glow:rgba(255,65,54,0.3);--surface:rgba(255,255,255,0.03);
-            --border:rgba(255,255,255,0.08);--text-muted:rgba(255,255,255,0.6);
+            --bg:#1C1917;--text:#FAFAF9;--primary:#F97316;--secondary:#78716C;
+            --accent:#FB923C;--card:rgba(68,64,60,0.4);--card-blur:blur(20px);
+            --feature-bg:rgba(249,115,22,0.1);--badge-bg:rgba(120,113,108,0.2);
+            --badge-border:#78716C;--glow:rgba(249,115,22,0.3);--surface:rgba(255,255,255,0.02);
+            --border:rgba(255,255,255,0.06);--text-muted:rgba(250,250,249,0.5);
         }
         html{scroll-behavior:smooth}
         body{
@@ -150,18 +150,7 @@
         .topbar-nav{display:flex;align-items:center;gap:24px}
         .topbar-nav a{color:var(--text-muted);text-decoration:none;font-size:14px;font-weight:500;transition:color .3s}
         .topbar-nav a:hover{color:var(--text)}
-        .theme-dropdown{
-            padding:8px 16px;font-size:13px;font-weight:600;
-            border:1.5px solid var(--border);border-radius:999px;
-            background:var(--card);color:var(--text);cursor:pointer;
-            backdrop-filter:blur(10px);transition:all .3s;
-            appearance:none;-webkit-appearance:none;
-            background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='white' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10z'/%3E%3C/svg%3E");
-            background-repeat:no-repeat;background-position:right 12px center;
-            padding-right:32px;
-        }
-        .theme-dropdown:hover{border-color:var(--primary);box-shadow:0 0 20px var(--glow)}
-        .theme-dropdown option{background:#1a1a2e;color:#fff}
+        /* Theme selector removed — Factory Floor only */
 
         /* ═══════ LAYOUT ═══════ */
         .main-content{position:relative;z-index:1;padding-top:64px}
@@ -383,22 +372,8 @@
             <a href="#features">Features</a>
             <a href="#how">How It Works</a>
             <a href="https://github.com/RoyGuanyu/ChatClaw" target="_blank">GitHub</a>
-            <select class="theme-dropdown" id="themeSelector">
-                <option value="cosmic-lobster">🌌 Cosmic Lobster</option>
-                <option value="midnight-steel">🔩 Midnight Steel</option>
-                <option value="forge-ember">🔥 Forge & Ember</option>
-                <option value="concrete-dawn">🏗️ Concrete Dawn</option>
-                <option value="copper-pipe">🔧 Copper Pipe</option>
-                <option value="blueprint">📐 Blueprint</option>
-                <option value="rust-oxide">🧱 Rust & Oxide</option>
-                <option value="factory-floor">🏭 Factory Floor</option>
-                <option value="titanium-chrome">⚙️ Titanium Chrome</option>
-                <option value="warehouse-loft">🪵 Warehouse Loft</option>
-                <option value="neon-weld">⚡ Neon Weld</option>
-                <option value="ocean-depth">🌊 Ocean Depth</option>
-                <option value="aurora-borealis">🌌 Aurora Borealis</option>
-                <option value="sakura-dusk">🌸 Sakura Dusk</option>
-            </select>
+            <!-- Theme fixed: Factory Floor -->
+<!-- removed -->
         </div>
     </nav>
 
@@ -640,128 +615,8 @@
         draw();
     })();
 
-    /* ═══════ THEMES ═══════ */
-    const themes={
-        'cosmic-lobster':{
-            bg:'#0A0E27',text:'#fff',primary:'#FF4136',secondary:'#00F5FF',accent:'#9D4EDD',
-            card:'rgba(255,255,255,0.06)',border:'rgba(255,255,255,0.08)',
-            featureBg:'rgba(255,65,54,0.08)',badgeBg:'rgba(157,78,221,0.15)',badgeBorder:'#9D4EDD',
-            glow:'rgba(255,65,54,0.3)',surface:'rgba(255,255,255,0.03)',muted:'rgba(255,255,255,0.6)',
-            topbar:'rgba(10,14,39,0.85)',starsVisible:true
-        },
-        'midnight-steel':{
-            bg:'#0D1117',text:'#E6EDF3',primary:'#58A6FF',secondary:'#7EE787',accent:'#D2A8FF',
-            card:'rgba(255,255,255,0.04)',border:'rgba(255,255,255,0.06)',
-            featureBg:'rgba(88,166,255,0.08)',badgeBg:'rgba(210,168,255,0.12)',badgeBorder:'#D2A8FF',
-            glow:'rgba(88,166,255,0.25)',surface:'rgba(255,255,255,0.02)',muted:'rgba(230,237,243,0.5)',
-            topbar:'rgba(13,17,23,0.9)',starsVisible:true
-        },
-        'forge-ember':{
-            bg:'#1A0A00',text:'#FFF5EB',primary:'#FF6B2B',secondary:'#FFB347',accent:'#FF4500',
-            card:'rgba(255,107,43,0.06)',border:'rgba(255,179,71,0.1)',
-            featureBg:'rgba(255,107,43,0.1)',badgeBg:'rgba(255,69,0,0.15)',badgeBorder:'#FF4500',
-            glow:'rgba(255,107,43,0.35)',surface:'rgba(255,107,43,0.02)',muted:'rgba(255,245,235,0.55)',
-            topbar:'rgba(26,10,0,0.9)',starsVisible:true
-        },
-        'concrete-dawn':{
-            bg:'#F5F5F0',text:'#1C1917',primary:'#DC2626',secondary:'#78716C',accent:'#F97316',
-            card:'rgba(255,255,255,0.8)',border:'rgba(0,0,0,0.08)',
-            featureBg:'rgba(220,38,38,0.05)',badgeBg:'rgba(249,115,22,0.1)',badgeBorder:'#F97316',
-            glow:'rgba(220,38,38,0.15)',surface:'rgba(0,0,0,0.02)',muted:'rgba(28,25,23,0.5)',
-            topbar:'rgba(245,245,240,0.92)',starsVisible:false
-        },
-        'copper-pipe':{
-            bg:'#1A1410',text:'#F5E6D3',primary:'#CD7F32',secondary:'#B8860B',accent:'#DAA520',
-            card:'rgba(205,127,50,0.06)',border:'rgba(205,127,50,0.12)',
-            featureBg:'rgba(205,127,50,0.08)',badgeBg:'rgba(218,165,32,0.12)',badgeBorder:'#DAA520',
-            glow:'rgba(205,127,50,0.3)',surface:'rgba(205,127,50,0.02)',muted:'rgba(245,230,211,0.55)',
-            topbar:'rgba(26,20,16,0.92)',starsVisible:true
-        },
-        'blueprint':{
-            bg:'#0A1628',text:'#E0F0FF',primary:'#4DA8FF',secondary:'#87CEEB',accent:'#1E90FF',
-            card:'rgba(77,168,255,0.05)',border:'rgba(77,168,255,0.12)',
-            featureBg:'rgba(77,168,255,0.08)',badgeBg:'rgba(30,144,255,0.12)',badgeBorder:'#1E90FF',
-            glow:'rgba(77,168,255,0.25)',surface:'rgba(77,168,255,0.02)',muted:'rgba(224,240,255,0.5)',
-            topbar:'rgba(10,22,40,0.92)',starsVisible:true
-        },
-        'rust-oxide':{
-            bg:'#1C1210',text:'#F0E0D6',primary:'#B7410E',secondary:'#CD853F',accent:'#A0522D',
-            card:'rgba(183,65,14,0.06)',border:'rgba(183,65,14,0.1)',
-            featureBg:'rgba(183,65,14,0.08)',badgeBg:'rgba(160,82,45,0.12)',badgeBorder:'#A0522D',
-            glow:'rgba(183,65,14,0.3)',surface:'rgba(183,65,14,0.02)',muted:'rgba(240,224,214,0.5)',
-            topbar:'rgba(28,18,16,0.92)',starsVisible:true
-        },
-        'factory-floor':{
-            bg:'#1C1917',text:'#FAFAF9',primary:'#F97316',secondary:'#78716C',accent:'#FB923C',
-            card:'rgba(68,64,60,0.4)',border:'rgba(255,255,255,0.06)',
-            featureBg:'rgba(249,115,22,0.1)',badgeBg:'rgba(120,113,108,0.2)',badgeBorder:'#78716C',
-            glow:'rgba(249,115,22,0.3)',surface:'rgba(255,255,255,0.02)',muted:'rgba(250,250,249,0.5)',
-            topbar:'rgba(28,25,23,0.92)',starsVisible:true
-        },
-        'titanium-chrome':{
-            bg:'#18181B',text:'#FAFAFA',primary:'#A1A1AA',secondary:'#71717A',accent:'#E4E4E7',
-            card:'rgba(255,255,255,0.04)',border:'rgba(255,255,255,0.08)',
-            featureBg:'rgba(161,161,170,0.08)',badgeBg:'rgba(228,228,231,0.08)',badgeBorder:'#71717A',
-            glow:'rgba(161,161,170,0.2)',surface:'rgba(255,255,255,0.02)',muted:'rgba(250,250,250,0.45)',
-            topbar:'rgba(24,24,27,0.92)',starsVisible:true
-        },
-        'warehouse-loft':{
-            bg:'#F7F2EC',text:'#2D2A26',primary:'#92400E',secondary:'#B45309',accent:'#D97706',
-            card:'rgba(255,255,255,0.7)',border:'rgba(0,0,0,0.06)',
-            featureBg:'rgba(146,64,14,0.06)',badgeBg:'rgba(217,119,6,0.1)',badgeBorder:'#D97706',
-            glow:'rgba(146,64,14,0.15)',surface:'rgba(0,0,0,0.02)',muted:'rgba(45,42,38,0.5)',
-            topbar:'rgba(247,242,236,0.92)',starsVisible:false
-        },
-        'neon-weld':{
-            bg:'#0A0A0F',text:'#F0F0F0',primary:'#00FF88',secondary:'#FF0080',accent:'#FFFF00',
-            card:'rgba(0,255,136,0.04)',border:'rgba(0,255,136,0.1)',
-            featureBg:'rgba(0,255,136,0.06)',badgeBg:'rgba(255,0,128,0.1)',badgeBorder:'#FF0080',
-            glow:'rgba(0,255,136,0.3)',surface:'rgba(0,255,136,0.01)',muted:'rgba(240,240,240,0.5)',
-            topbar:'rgba(10,10,15,0.92)',starsVisible:true
-        },
-        'ocean-depth':{
-            bg:'#041C32',text:'#E8F4FD',primary:'#04D9FF',secondary:'#0078D4',accent:'#00B4D8',
-            card:'rgba(4,217,255,0.05)',border:'rgba(4,217,255,0.1)',
-            featureBg:'rgba(4,217,255,0.08)',badgeBg:'rgba(0,180,216,0.12)',badgeBorder:'#00B4D8',
-            glow:'rgba(4,217,255,0.25)',surface:'rgba(4,217,255,0.02)',muted:'rgba(232,244,253,0.5)',
-            topbar:'rgba(4,28,50,0.92)',starsVisible:true
-        },
-        'aurora-borealis':{
-            bg:'#0B0F1A',text:'#F0F8FF',primary:'#00E676',secondary:'#7C4DFF',accent:'#18FFFF',
-            card:'rgba(0,230,118,0.04)',border:'rgba(124,77,255,0.12)',
-            featureBg:'rgba(0,230,118,0.06)',badgeBg:'rgba(124,77,255,0.1)',badgeBorder:'#7C4DFF',
-            glow:'rgba(0,230,118,0.25)',surface:'rgba(24,255,255,0.02)',muted:'rgba(240,248,255,0.5)',
-            topbar:'rgba(11,15,26,0.92)',starsVisible:true
-        },
-        'sakura-dusk':{
-            bg:'#1A0F1E',text:'#FFF0F5',primary:'#FF69B4',secondary:'#DDA0DD',accent:'#FFB6C1',
-            card:'rgba(255,105,180,0.05)',border:'rgba(221,160,221,0.1)',
-            featureBg:'rgba(255,105,180,0.08)',badgeBg:'rgba(255,182,193,0.1)',badgeBorder:'#FFB6C1',
-            glow:'rgba(255,105,180,0.25)',surface:'rgba(255,105,180,0.02)',muted:'rgba(255,240,245,0.5)',
-            topbar:'rgba(26,15,30,0.92)',starsVisible:true
-        }
-    };
-
-    function applyTheme(name){
-        const t=themes[name];if(!t)return;
-        const r=document.documentElement.style;
-        r.setProperty('--bg',t.bg);r.setProperty('--text',t.text);
-        r.setProperty('--primary',t.primary);r.setProperty('--secondary',t.secondary);
-        r.setProperty('--accent',t.accent);r.setProperty('--card',t.card);
-        r.setProperty('--border',t.border);r.setProperty('--feature-bg',t.featureBg);
-        r.setProperty('--badge-bg',t.badgeBg);r.setProperty('--badge-border',t.badgeBorder);
-        r.setProperty('--glow',t.glow);r.setProperty('--surface',t.surface);
-        r.setProperty('--text-muted',t.muted);
-        document.body.style.background=t.bg;
-        document.querySelector('.topbar').style.background=t.topbar;
-        document.getElementById('starfield').style.opacity=t.starsVisible?'1':'.15';
-        localStorage.setItem('chatclaw-theme',name);
-    }
-
-    const sel=document.getElementById('themeSelector');
-    sel.addEventListener('change',e=>applyTheme(e.target.value));
-    const saved=localStorage.getItem('chatclaw-theme')||'cosmic-lobster';
-    sel.value=saved;applyTheme(saved);
+    /* ═══════ THEME: Factory Floor (fixed) ═══════ */
+    document.querySelector('.topbar').style.background='rgba(28,25,23,0.92)';
 
     /* ═══════ SCROLL REVEAL ═══════ */
     const obs=new IntersectionObserver((entries)=>{
